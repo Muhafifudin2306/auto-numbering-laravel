@@ -50,7 +50,7 @@
         </div>
     </nav>
 
-    <div class="container col-lg-8"">
+    <div class="container col-lg-6"">
         <div id="title" style="margin-top: 50px">
             <div class="title">
                 <h4> Prefix Table </h4>
@@ -61,20 +61,29 @@
         </div>
     </div>
     <div id="table_body" style="margin-top: 30px">
-        <div class="container col-lg-8">
+        <div class="container col-lg-6">
             <table class="table table-bordered align-middle">
-                <thead>
+                <thead class="table table-primary">
                     <tr style="text-align: center">
-                        <th scope="col">ID</th>
-                        <th scope="col-8">Prefix</th>
-                        <th scope="col">Action</th>
+                        <th width="50px">ID</th>
+                        <th width="200px">Prefix</th>
+                        <th width="50px">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($prefix as $pre)
                         <tr>
-                            <td> {{ $pre->id }} </td>
+                            <td align="center">{{ $pre->id }} </td>
                             <td> {{ $pre->prefix }} </td>
+                            <td align="center"> <a href="{{ route('edit', $pre->id) }}" class="btn btn-warning"
+                                    style="margin-right: 5px" type="button"> Edit
+                                </a>
+                                <a href="{{ route('destroy', $pre->id) }}" class="btn btn-danger" type="button"> Hapus
+                                </a>
+
+
+
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

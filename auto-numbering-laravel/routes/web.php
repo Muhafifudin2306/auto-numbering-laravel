@@ -15,3 +15,8 @@ use App\Http\Controllers\PrefixController;
 */
 
 Route::get('/', [PrefixController::class, 'index'])->name('index');
+Route::get('/addprefix', [PrefixController::class, 'add'])->name('add');
+Route::post('/prefixadd', [PrefixController::class, 'prefixadd'])->name('add');
+Route::get('/edit/{id}', [PrefixController::class, 'edit'])->name('edit');
+Route::post('/update/{id}', [PrefixController::class, 'update'])->name('update');
+Route::get('/destroy/{id}',[PrefixController::class, 'destroy'])->name('destroy');
