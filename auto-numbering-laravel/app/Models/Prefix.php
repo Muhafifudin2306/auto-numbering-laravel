@@ -14,5 +14,6 @@ class Prefix extends Model
     protected $fillable = [
         'prefix'
     ];
+
         
 }

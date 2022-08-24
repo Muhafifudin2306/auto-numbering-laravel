@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('prefixes', function (Blueprint $table) {
-            $table->Bigincrements('id');
-            $table->string('prefix', 11);
+        Schema::create('invoices', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('number')->nullable();
+            $table->string('customer', 100);
+            $table->integer('total');
+            $table->unsignedBigInteger('series_id')->nullable();
+            $table->foreign('series_id')->references('id')->on('prefixes')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prefixes');
+        Schema::dropIfExists('invoices');
     }
 };

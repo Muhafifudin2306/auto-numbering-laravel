@@ -34,39 +34,43 @@
         </div>
     </nav>
 
-    <div class="container col-lg-6"">
+    <div class="container col-lg-8"">
         <div id="title" style="margin-top: 50px">
             <div class="title">
-                <h4> Prefix Table </h4>
+                <h4> Invoice Table </h4>
             </div>
         </div>
         <div id="button_add" style="margin-top: 50px">
-            <a href="/addprefix" type="button" class="btn btn-primary"> +Add Prefix </a>
+            <a href="/addinvoice" type="button" class="btn btn-primary"> +Add Invoice </a>
         </div>
     </div>
     <div id="table_body" style="margin-top: 30px">
-        <div class="container col-lg-6">
+        <div class="container col-lg-8">
             <table class="table table-bordered align-middle">
                 <thead class="table table-primary">
                     <tr style="text-align: center">
                         <th width="50px">ID</th>
-                        <th width="200px">Prefix</th>
-                        <th width="50px">Action</th>
+                        <th width="100px">Number</th>
+                        <th width="200px">Customer</th>
+                        <th width="100px">Total</th>
+                        <th width="100px">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($prefix as $pre)
+                    @foreach ($invoice as $inv)
                         <tr>
-                            <td align="center">{{ $pre->id }} </td>
-                            <td> {{ $pre->prefix }} </td>
-                            <td align="center"> <a href="{{ route('edit', $pre->id) }}" class="btn btn-warning"
+                            <td align="center">{{ $inv->id }} </td>
+                            <td> {{ $inv->prefix->prefix ?? '' }}-{{ str_pad($inv->number, 5, '0', STR_PAD_LEFT) }}
+                            </td>
+                            <td> {{ $inv->customer }} </td>
+                            <td> {{ $inv->total }} </td>
+                            <td align="center"> <a href="{{ route('edit-invoice', $inv->id) }}" class="btn btn-warning"
                                     style="margin-right: 5px" type="button"> Edit
                                 </a>
-                                <a href="{{ route('destroy', $pre->id) }}" class="btn btn-danger" type="button"> Hapus
+                                <a href="{{ route('destroy-invoice', $inv->id) }}" class="btn btn-danger"
+                                    type="button">
+                                    Hapus
                                 </a>
-
-
-
                             </td>
                         </tr>
                     @endforeach
